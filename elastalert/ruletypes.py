@@ -1235,7 +1235,7 @@ class PercentageMatchRule(BaseAggregationRule):
             else:
                 match_percentage = (match_bucket_count * 1.0) / (total_count * 1.0) * 100
                 if self.percentage_violation(match_percentage):
-                    match = {self.rules['timestamp_field']: timestamp, 'percentage': match_percentage, 'denominator': total_count}
+                    match = {self.rules['timestamp_field']: timestamp, 'percentage': match_percentage,'numerator':match_bucket_count, 'denominator': total_count}
                     if query_key is not None:
                         match[self.rules['query_key']] = query_key
                     self.add_match(match)
